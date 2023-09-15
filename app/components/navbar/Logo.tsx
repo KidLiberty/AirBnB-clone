@@ -12,7 +12,9 @@ const Logo = () => {
       src='/images/logo.png'
       height={100}
       width={100}
-      alt='Logo' />
+      priority
+      alt='Logo'
+    />
   )
 }
 
