@@ -34,7 +34,7 @@ const Modal = ({
 
   useEffect(() => {
     setShowModal(isOpen)
-  }, [])
+  }, [isOpen])
 
   const handleClose = useCallback(() => {
     if (disabled) return
@@ -94,10 +94,10 @@ const Modal = ({
                 <div className='w-full flex flex-row items-center gap-4'>
                   {secondaryAction && secondaryActionLabel && (
                     <Button
-                      outline
                       disabled={disabled}
                       label={secondaryActionLabel}
                       onClick={handleSecondaryAction}
+                      outline
                     />
                   )}
                   <Button
@@ -106,6 +106,7 @@ const Modal = ({
                     onClick={handleSubmit}
                   />
                 </div>
+                {footer}
               </div>
             </div>
           </div>

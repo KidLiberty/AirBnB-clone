@@ -12,7 +12,7 @@ const UserMenu = (): ReactElement => {
   const registerModal = useRegisterModal()
 
   const toggleOpen = useCallback(() => {
-    setIsOpen(prev => !prev)
+    setIsOpen(prevValue => !prevValue)
   }, [])
 
   return (
