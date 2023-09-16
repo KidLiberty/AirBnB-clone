@@ -11,6 +11,7 @@ import useRegisterModal from '@/app/hooks/useRegisterModal'
 import Modal from './Modal'
 import Heading from '../Heading'
 import Input from '../inputs/Input'
+import Button from '../Button'
 
 const RegisterModal = (): ReactElement => {
   const [isLoading, setIsLoading] = useState(false)
@@ -39,7 +40,7 @@ const RegisterModal = (): ReactElement => {
       })
   }
 
-  const bodyContent = (
+  const bodyContent: ReactElement = (
     <div className='flex flex-col gap-4'>
       <Heading title='Welcome to Airbnb' subtitle='Create an account!' />
       <Input
@@ -70,6 +71,37 @@ const RegisterModal = (): ReactElement => {
     </div>
   )
 
+  const footerContent: ReactElement = (
+    <div className='flex flex-col gap-4 mt-3'>
+      <hr />
+      <Button
+        label='Continue with Google'
+        icon={FcGoogle}
+        outline
+        onClick={() => { }}
+      />
+      <Button
+        label='Continue with Github'
+        icon={AiFillGithub}
+        outline
+        onClick={() => { }}
+      />
+      <div className='mt-4 text-neutral-500 text-center font-light'>
+        <div className='flex flex-row justify-center items-center gap-2'>
+          <div>
+            Already have an account?
+          </div>
+          <div
+            className='text-neutral-800 cursor-pointer hover:underline'
+            onClick={registerModal.onClose}
+          >
+            Log In
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+
   return (
     <Modal
       disabled={isLoading}
@@ -79,6 +111,7 @@ const RegisterModal = (): ReactElement => {
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
+      footer={footerContent}
     />
   )
 }
