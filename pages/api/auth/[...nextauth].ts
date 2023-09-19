@@ -21,11 +21,11 @@ export const authOptions: AuthOptions = {
     CredentialsProvider({
       name: 'credentials',
       credentials: {
-        email: {label: 'email', type: 'text'},
-        password: {label: 'password', type: 'password'}
+        email: { label: 'email', type: 'text' },
+        password: { label: 'password', type: 'password' }
       },
       async authorize(credentials) {
-        if(!credentials?.email || !credentials?.password) {
+        if (!credentials?.email || !credentials?.password) {
           throw new Error('Invalid credentials')
         }
 
@@ -36,16 +36,16 @@ export const authOptions: AuthOptions = {
           }
         })
 
-        if(!user || !user?.hashedPassword) {
+        if (!user || !user?.hashedPassword) {
           throw new Error('Invalid credentials')
         }
 
         const isCorrectPassword = await bcrypt.compare(credentials.password, user.hashedPassword)
-      
-        if(!isCorrectPassword) {
+
+        if (!isCorrectPassword) {
           throw new Error('Invalid credentials')
         }
-      
+
         return user
       }
     })
